@@ -12,7 +12,7 @@ import { ScootersService } from './scooter.service';
 import { CreateScooterDto } from './dto/create-scooter.dto';
 import { UpdateScooterDto } from './dto/update-scooter.dto';
 import { ParseObjectIdPipe } from 'src/pipes/ParseObjectIdPipe/ParseObjectIdPipe.pipe';
-import { Status } from './enums/scooter.enums';
+import { Status } from './enums/scooter.enum';
 
 @Controller('scooters')
 export class ScootersController {

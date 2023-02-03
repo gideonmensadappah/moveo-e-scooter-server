@@ -14,15 +14,15 @@ export class ParkingsService {
   ) {}
   async create(createParkingDto: CreateParkingDto) {
     try {
-      (
-        await this.parkingModel.create({
-          _id: new Types.ObjectId(),
-          ...createParkingDto,
-        })
-      ).save();
+      const newParking = {
+        _id: new Types.ObjectId(),
+        ...createParkingDto,
+      };
+
+      await (await this.parkingModel.create(newParking)).save();
 
       return {
-        data: 'inserted into db!',
+        data: newParking,
       };
     } catch (err) {
       return {

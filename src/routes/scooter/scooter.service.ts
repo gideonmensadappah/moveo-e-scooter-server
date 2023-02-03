@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CreateScooterDto } from './dto/create-scooter.dto';
 import { UpdateScooterDto } from './dto/update-scooter.dto';
 import { Scooter } from 'src/schemas/scooter/scooter.schema';
-import { Status } from './enums/scooter.enums';
+import { Status } from './enums/scooter.enum';
 
 @Injectable()
 export class ScootersService {

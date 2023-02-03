@@ -1,7 +1,7 @@
 import { IsDateString, IsObject, IsEnum, IsOptional } from 'class-validator';
 
 import { Location } from 'src/interfaces/Location/location';
-import { Status } from '../enums/scooter.enums';
+import { Status } from '../enums/scooter.enum';
 
 export class CreateScooterDto {
   @IsObject()

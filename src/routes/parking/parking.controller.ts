@@ -12,7 +12,7 @@ import { CreateParkingDto } from './dto/create-parking.dto';
 import { UpdateParkingDto } from './dto/update-parking.dto';
 import { ParseObjectIdPipe } from 'src/pipes/ParseObjectIdPipe/ParseObjectIdPipe.pipe';
 
-@Controller('parkings')
+@Controller('api/parkings')
 export class ParkinsgController {
   constructor(private readonly parkingsService: ParkingsService) {}
 

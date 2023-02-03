@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { Location } from 'src/interfaces/Location/location';
 
-import { Status } from 'src/routes/scooter/enums/scooter.enums';
+import { Status } from 'src/routes/scooter/enums/scooter.enum';
 
 export type ScooterDocument = Scooter & Document;
 

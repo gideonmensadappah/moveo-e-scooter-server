@@ -8,6 +8,7 @@ import { UserModule } from './routes/user/user.module';
 import { ParkingModule } from './routes/parking/parking.module';
 import { ScooterModule } from './routes/scooter/scooter.module';
 import { FailureModule } from './routes/failure/failure.module';
+import { AuthModule } from './routes/auth/auth.module';
 import getDBURI from './utils/getDBURI';
 
 @Module({
@@ -20,6 +21,7 @@ import getDBURI from './utils/getDBURI';
     ScooterModule,
     FailureModule,
     MongooseModule.forRoot(getDBURI()),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,4 +1,4 @@
-import { Status } from '../enums/scooter.enums';
+import { Status } from '../enums/scooter.enum';
 
 export class Scooter {
   _id: string;
