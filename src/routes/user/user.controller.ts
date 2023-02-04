@@ -14,8 +14,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { ParseObjectIdPipe } from 'src/pipes/ParseObjectIdPipe/ParseObjectIdPipe.pipe';
 import { JwtGuard } from '../../guards/jwt/jwt.guard';
 
-@Controller('users')
-@UseGuards(JwtGuard)
+@Controller('api/users')
+// @UseGuards(new JwtGuard())
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

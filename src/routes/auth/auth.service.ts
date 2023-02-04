@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { JwtService } from '@nestjs/jwt';
@@ -30,10 +30,9 @@ export class AuthService {
     const searchEmail = { email };
 
     const user = await this.userModel.findOne(searchEmail, projectInfo);
-    if (!user) throw 'User was not found!';
-
     const isValidPassowrd = await bcrypt.compare(password, user.password);
-    if (!isValidPassowrd) throw 'Passowrd is incorrect!';
+
+    if (!isValidPassowrd || !user) throw 'Invalid credentials!';
 
     delete user.password;
 
@@ -44,12 +43,14 @@ export class AuthService {
     try {
       const user = await this.validateUser(email, password);
 
-      if (!user) throw 'You cant login!';
+      if (!user) throw 'Invalid credentials!';
+      delete user.password;
 
-      const userJwt = await this.jwtSerivce.signAsync({ user });
+      const jwt = await this.jwtSerivce.signAsync({ user });
 
       return {
-        data: userJwt,
+        data: user,
+        token: jwt,
       };
     } catch (err) {
       return {
@@ -69,6 +70,25 @@ export class AuthService {
         })
       ).save();
 
+      delete user.password;
+
+      return {
+        data: user,
+      };
+    } catch (err) {
+      return {
+        data: err,
+      };
+    }
+  }
+
+  async getUser(jwt: string) {
+    try {
+      const { user } = await this.jwtSerivce.verifyAsync(jwt);
+
+      if (!user) {
+        throw new UnauthorizedException();
+      }
       delete user.password;
 
       return {

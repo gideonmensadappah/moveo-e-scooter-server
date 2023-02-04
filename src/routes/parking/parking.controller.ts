@@ -6,13 +6,16 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ParkingsService } from './parking.service';
 import { CreateParkingDto } from './dto/create-parking.dto';
 import { UpdateParkingDto } from './dto/update-parking.dto';
 import { ParseObjectIdPipe } from 'src/pipes/ParseObjectIdPipe/ParseObjectIdPipe.pipe';
+import { JwtGuard } from '../../guards/jwt/jwt.guard';
 
 @Controller('api/parkings')
+// @UseGuards(new JwtGuard())
 export class ParkinsgController {
   constructor(private readonly parkingsService: ParkingsService) {}
 
