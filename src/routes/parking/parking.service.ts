@@ -101,7 +101,7 @@ export class ParkingsService {
       const { deletedCount } = deleted;
 
       return {
-        data: deletedCount,
+        data: _id,
       };
     } catch (err) {
       return {
