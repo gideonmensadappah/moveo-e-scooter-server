@@ -14,7 +14,7 @@ import { UpdateScooterDto } from './dto/update-scooter.dto';
 import { ParseObjectIdPipe } from 'src/pipes/ParseObjectIdPipe/ParseObjectIdPipe.pipe';
 import { Status } from './enums/scooter.enum';
 
-@Controller('scooters')
+@Controller('api/scooters')
 export class ScootersController {
   constructor(private readonly scootersService: ScootersService) {}
 

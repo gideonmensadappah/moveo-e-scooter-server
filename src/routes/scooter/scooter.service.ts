@@ -15,15 +15,15 @@ export class ScootersService {
 
   async create(createScooterDto: CreateScooterDto) {
     try {
-      (
-        await this.scooterModel.create({
-          _id: new Types.ObjectId(),
-          ...createScooterDto,
-        })
-      ).save();
+      const newScooter = {
+        _id: new Types.ObjectId(),
+        ...createScooterDto,
+      };
+
+      (await this.scooterModel.create(newScooter)).save();
 
       return {
-        data: 'inserted into db!',
+        data: newScooter,
       };
     } catch (err) {
       return {
