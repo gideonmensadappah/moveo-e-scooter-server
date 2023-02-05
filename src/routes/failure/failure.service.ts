@@ -78,6 +78,21 @@ export class FailuresService {
     }
   }
 
+  async findFailureHistory() {
+    try {
+      const failures = await this.failureModel.find().exec();
+
+      return {
+        msg: `This action returns all failures`,
+        data: failures,
+      };
+    } catch (err) {
+      return {
+        msg: `This action returned error`,
+        data: err,
+      };
+    }
+  }
   async update(_id: Types.ObjectId, updateFailureDto: UpdateFailureDto) {
     try {
       const findByID = { _id };

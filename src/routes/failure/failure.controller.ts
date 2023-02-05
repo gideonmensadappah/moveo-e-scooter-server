@@ -28,6 +28,11 @@ export class FailuresController {
     return this.failureService.findByStatus(status);
   }
 
+  @Get('/history')
+  findFailureHistory() {
+    return this.failureService.findFailureHistory();
+  }
+
   @Get()
   findAll() {
     return this.failureService.findAll();

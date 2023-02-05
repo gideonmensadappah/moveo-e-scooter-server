@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { Location } from 'src/interfaces/Location/location';
 import { FailureStatus, Type } from 'src/routes/failure/enums/failure.enums';
 
 export type FailureDocument = Failure & Document;
