@@ -14,15 +14,15 @@ export class UsersService {
 
   async create(createUsersDto: CreateUserDto) {
     try {
-      (
-        await this.userModel.create({
-          _id: new Types.ObjectId(),
-          ...createUsersDto,
-        })
-      ).save();
+      const newUser = {
+        _id: new Types.ObjectId(),
+        ...createUsersDto,
+      };
+
+      (await this.userModel.create(newUser)).save();
 
       return {
-        data: 'inserted into db!',
+        data: newUser,
       };
     } catch (err) {
       return {
